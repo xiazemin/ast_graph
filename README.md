@@ -6,11 +6,11 @@
 `
 package main
 
-import "github.com/xiazemin/golang/ast/ast_graph/gen"
+import "github.com/xiazemin/ast_graph/gen"
 
 func main() {
-	path := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/exp/main.go"
-	dpath := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/"
+	path := "/Users/didi/goLang/src/github.com/xiazemin/ast_graph/exp/main.go"
+	dpath := "/Users/didi/goLang/src/github.com/xiazemin/ast_graph/"
 	gen.GenSvg(path, dpath, "tree")
 }
 

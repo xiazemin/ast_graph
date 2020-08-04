@@ -6,17 +6,7 @@ import (
 	"os"
 )
 
-func pathExists(path string) bool {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	fmt.Println(err)
-	return false
-}
+// WriteToFile  write the svg to file
 func WriteToFile(path, name, content string) {
 	fname := path + name
 	var f *os.File
@@ -27,7 +17,9 @@ func WriteToFile(path, name, content string) {
 		f, err = os.Create(fname)
 	}
 	defer f.Close()
+
 	fmt.Println(fname, err)
+
 	if err != nil {
 		log.Println(err.Error())
 	}
@@ -36,4 +28,16 @@ func WriteToFile(path, name, content string) {
 	if err != nil {
 		log.Println(err.Error())
 	}
+}
+
+func pathExists(path string) bool {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	fmt.Println(err)
+	return false
 }

@@ -1,17 +1,26 @@
 package dot
 
 import (
-	"github.com/xiazemin/golang/ast/ast_graph/graph"
 	"os/exec"
+
+	"github.com/xiazemin/ast_graph/graph"
 )
+
+// GenTreeDot  generate the dot of ast
+func GenTreeDot(path, name string) string {
+	WriteToFile(path, name+".dot", buildTree())
+	cmd := exec.Command("/usr/local/bin/dot", "-Tsvg", path+name+".dot", "-o", path+name+".svg")
+	cmd.Run()
+	return name
+}
 
 func buildTree() string {
 	graphs := ""
-	for k, _ := range graph.NodeList {
+	for k := range graph.NodeList {
 		graphs += k.Dot(graph.NodeList)
 	}
 
-	for k, _ := range graph.EdageMap {
+	for k := range graph.EdageMap {
 		graphs += k.Dot(graph.EdageMap)
 	}
 	style := "\tsubgraph clustera { \n\tstyle=invis;\n\trank=same;\n" +
@@ -26,11 +35,4 @@ func buildTree() string {
 		"\tGenDecl[label=\"{<GenDecl>GenDecl}\", color=pink,style=dashed];\n" +
 		"\tdefault -> main -> FuncDecl -> File -> GenDecl -> ImportSpec -> CallExpr -> Package;\n\t}\n"
 	return getDotHead() + graphs + style + node + getDotTail()
-}
-
-func GenTreeDot(path, name string) string {
-	WriteToFile(path, name+".dot", buildTree())
-	cmd := exec.Command("/usr/local/bin/dot", "-Tsvg", path+name+".dot", "-o", path+name+".svg")
-	cmd.Run()
-	return name
 }
