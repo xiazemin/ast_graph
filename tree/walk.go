@@ -2,8 +2,9 @@ package tree
 
 import (
 	"fmt"
-	"github.com/xiazemin/golang/ast/ast_graph/graph"
 	"go/ast"
+
+	"github.com/xiazemin/ast_graph/graph"
 )
 
 func Walk(v ast.Visitor, node ast.Node) {
