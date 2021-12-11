@@ -1,8 +1,8 @@
 package tree
 
 import (
+	"astgraph/graph"
 	"fmt"
-	"github.com/xiazemin/golang/ast/ast_graph/graph"
 	"go/ast"
 )
 

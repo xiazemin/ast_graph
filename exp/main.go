@@ -1,17 +1,18 @@
-package main
+package exp
 
 import (
 	"fmt"
-	"github.com/xiazemin/golang/ast/ast_graph/exp/multi"
+
+	"astgraph/exp/multi"
 )
 
-func main()  {
-	a:=1
-	b:=2
-	fmt.Println(a+b,add(a,b),multi.Multi(a,b),devide(a,b))
+func main() {
+	a := 1
+	b := 2
+	fmt.Println(a+b, add(a, b), multi.Multi(a, b), devide(a, b))
 
 }
 
-func devide(i,j int)int  {
-	return i/j
+func devide(i, j int) int {
+	return i / j
 }
