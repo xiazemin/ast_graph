@@ -1,7 +1,7 @@
 package dot
 
 import (
-	"github.com/xiazemin/golang/ast/ast_graph/graph"
+	"astgraph/graph"
 	"os/exec"
 )
 

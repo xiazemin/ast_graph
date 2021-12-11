@@ -1,5 +1,5 @@
-package main
+package exp
 
-func add(i,j int)int  {
-	return i+j
+func add(i, j int) int {
+	return i + j
 }
