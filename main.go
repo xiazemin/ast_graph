@@ -1,9 +1,9 @@
 package main
 
-import "github.com/xiazemin/golang/ast/ast_graph/gen"
+import "astgraph/gen"
 
 func main() {
-	path := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/exp/main.go"
-	dpath := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/"
+	path := "./exp/main.go"
+	dpath := "./"
 	gen.GenSvg(path, dpath, "tree")
 }
