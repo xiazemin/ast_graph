@@ -2,16 +2,15 @@
 
 2，go get https://github.com/xiazemin/ast_graph
 
-3，run
-`
+3，go run main.go
+
+`````
 package main
 
-import "github.com/xiazemin/golang/ast/ast_graph/gen"
+import "ast_graph/gen"
 
 func main() {
-	path := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/exp/main.go"
-	dpath := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/"
-	gen.GenSvg(path, dpath, "tree")
+	gen.GenSvg("exp/main.go", "./", "tree")
 }
 
-`
+```
