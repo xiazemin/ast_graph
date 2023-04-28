@@ -1,9 +1,9 @@
 package gen
 
 import (
+	"ast_graph/dot"
+	"ast_graph/tree"
 	"fmt"
-	"github.com/xiazemin/golang/ast/ast_graph/dot"
-	"github.com/xiazemin/golang/ast/ast_graph/tree"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -15,10 +15,9 @@ import (
 
 type Visitor int
 
-func (this Visitor)Visit(node  ast.Node) (w ast.Visitor){
-	return  this
+func (this Visitor) Visit(node ast.Node) (w ast.Visitor) {
+	return this
 }
-
 
 var commands = map[string]string{
 	"windows": "cmd /c start",
@@ -26,24 +25,24 @@ var commands = map[string]string{
 	"linux":   "xdg-open",
 }
 
-func GenSvg(spath ,dpath ,name string) {
+func GenSvg(spath, dpath, name string) {
 	fset := token.NewFileSet()
-	path,_:=filepath.Abs(spath)
+	path, _ := filepath.Abs(spath)
 	f, err := parser.ParseFile(fset, path, nil, parser.AllErrors)
 	if err != nil {
 		log.Println(err)
 		return
 	}
 	var v Visitor
-	tree.Walk(v,f)
-	dot.GenTreeDot(dpath,name)
+	tree.Walk(v, f)
+	dot.GenTreeDot(dpath, name)
 
-	run,ok:=commands[runtime.GOOS]
-	if !ok{
-		fmt.Println(runtime.GOOS,run)
+	run, ok := commands[runtime.GOOS]
+	if !ok {
+		fmt.Println(runtime.GOOS, run)
 	}
 	//Open calls the OS default program for uri
-	cmd := exec.Command("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",dpath+name+".svg")
+	cmd := exec.Command("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", dpath+name+".svg")
 	cmd.Start()
 }
 
