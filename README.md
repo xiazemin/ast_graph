@@ -1,17 +1,16 @@
-1,安装graphviz
+# 使用说明
 
-2，go get https://github.com/xiazemin/ast_graph
+## 依赖
 
-3，run
-`
-package main
+- graphviz
 
-import "github.com/xiazemin/golang/ast/ast_graph/gen"
+## 编译
 
-func main() {
-	path := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/exp/main.go"
-	dpath := "/Users/didi/goLang/src/github.com/xiazemin/golang/ast/ast_graph/"
-	gen.GenSvg(path, dpath, "tree")
-}
+- `go mod tidy`
+- `go build`
 
-`
+## 运行
+
+- `./astgraph`
+
+![AST tree](./tree.svg)
